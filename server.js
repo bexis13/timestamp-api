@@ -22,7 +22,7 @@ app.get("/:id", function(request, response){
             response.send({unix: unixTime, natural:naturalTime});
         }
         else{
-            var unixTime = Number(moment(date).format("x")); //x to return the unix timestamp in milliseconds
+            var unixTime = Number(date); //x to return the unix timestamp in milliseconds
             var naturalTime = moment(date).format("LL"); //x to the date in natural date format
             response.send({unix: unixTime, natural:naturalTime});
         }
@@ -30,7 +30,6 @@ app.get("/:id", function(request, response){
     else{
         response.send({unix: null, natural: null});//return null when date is invalid
     }
-   
 });
 
 app.listen(8080, function(){
