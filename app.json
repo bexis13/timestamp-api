@@ -1,0 +1,6 @@
+{
+    "name": "timestamp api",
+    "description": "a simple timestamp microservice",
+    "repository": "https://github.com/bexis13/timestamp-api",
+    "keywords": ["node","express", "static"]
+}
