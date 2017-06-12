@@ -5,8 +5,8 @@ moment().format();
 
 app.get("/", function(request, response){
      console.log("worked");
-  
 });
+
 app.get("/:id", function(request, response){
     var naturalTimeEntered = false;
     var date = request.params.id;//get the date user put in the url
