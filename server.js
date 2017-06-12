@@ -17,13 +17,13 @@ app.get("/:id", function(request, response){
     }
     if(moment(date).isValid()){//if its a valid date
         if(naturalTimeEntered){ // if it was a valid and natural date entered
-            var unixTime = Number(moment(date).format("X")); //x to return the unix timestamp in milliseconds
-            var naturalTime = moment(date).format("LL"); //x to the date in natural date format
+            var unixTime = Number(moment(date).format("X")); //X to return the unix timestamp of the date
+            var naturalTime = moment(date).format("LL"); //LL to convert the date to natural date format
             response.send({unix: unixTime, natural:naturalTime});
         }
         else{
-            var unixTime = Number(date); //x to return the unix timestamp in milliseconds
-            var naturalTime = moment(date).format("LL"); //x to the date in natural date format
+            var unixTime = Number(date); //the unix timestamp as entered 
+            var naturalTime = moment(date).format("LL"); //LL to present the date in natural date format
             response.send({unix: unixTime, natural:naturalTime});
         }
     }
