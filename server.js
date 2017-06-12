@@ -1,11 +1,11 @@
 var express = require("express");
 var app = express();
+var path = require("path");
 var moment = require("moment");
 moment().format();
 
-app.get("/", function(request, response){
-     console.log("worked");
-});
+
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.get("/:id", function(request, response){
     var naturalTimeEntered = false;
@@ -15,20 +15,20 @@ app.get("/:id", function(request, response){
         date = request.params.id; // leave it how the user entered it
         var naturalTimeEntered = true;
     }
-    if(moment(date).isValid()){//if its a valid date
+    if(moment(date,  ["LL","X"]).isValid()){//if its a valid date, natural or unix
         if(naturalTimeEntered){ // if it was a valid and natural date entered
-            var unixTime = Number(moment(date).format("X")); //X to return the unix timestamp of the date
-            var naturalTime = moment(date).format("LL"); //LL to convert the date to natural date format
-            response.send({unix: unixTime, natural:naturalTime});
+            var unixTime = Number(moment(date, "LL").format("X")); //X to return the unix timestamp of the date
+            var naturalTime = date; //LL to convert the date to natural date format
+            response.json({unix: unixTime, natural:naturalTime});
         }
         else{
             var unixTime = Number(date); //the unix timestamp as entered 
-            var naturalTime = moment(date).format("LL"); //LL to present the date in natural date format
-            response.send({unix: unixTime, natural:naturalTime});
+            var naturalTime = moment(date, "X").format("LL"); //LL to present the date in natural date format
+            response.json({unix: unixTime, natural:naturalTime});
         }
     }
     else{
-        response.send({unix: null, natural: null});//return null when date is invalid
+        response.json({unix: null, natural: null});//return null when date is invalid
     }
 });
 
