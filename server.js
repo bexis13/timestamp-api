@@ -20,12 +20,12 @@ app.get("/:id", function(request, response){
         if(naturalTimeEntered){ // if it was a valid and natural date entered
             var unixTime = Number(moment(date, "LL").format("X")); //X to return the unix timestamp of the date
             var naturalTime = date; //LL to convert the date to natural date format
-            response.json({unix: unixTime, natural:naturalTime});
+            response.json({unix: unixTime, natural:naturalTime});//return in json format
         }
         else{
             var unixTime = Number(date); //the unix timestamp as entered 
             var naturalTime = moment(date, "X").format("LL"); //LL to present the date in natural date format
-            response.json({unix: unixTime, natural:naturalTime});
+            response.json({unix: unixTime, natural:naturalTime});//return in json format
         }
     }
     else{
