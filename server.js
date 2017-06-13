@@ -6,7 +6,7 @@ moment().format();
 var port = process.env.PORT || 8080;
 
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public')));//we will server static files
 
 app.get("/:id", function(request, response){
     var naturalTimeEntered = false;//to keep track if natural number was entered
@@ -34,6 +34,6 @@ app.get("/:id", function(request, response){
 });
 
 app.listen(port, function(){
-    console.log("app is listening on port ");
+    console.log("app is listening/running on port ");
 })
 
