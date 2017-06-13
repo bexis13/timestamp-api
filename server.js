@@ -9,7 +9,7 @@ var port = process.env.PORT || 8080;
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get("/:id", function(request, response){
-    var naturalTimeEntered = false;
+    var naturalTimeEntered = false;//to keep track if natural number was entered
     var date = request.params.id;//get the date user put in the url
     date = Number(date);
     if(date.toString() === "NaN"){ //if a natural date was entered
